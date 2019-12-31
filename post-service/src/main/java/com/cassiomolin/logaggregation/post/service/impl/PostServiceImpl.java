@@ -60,6 +60,14 @@ public class PostServiceImpl implements PostService {
     @Override
     public Optional<PostWithComments> getPost(Long id) {
 
+        if (id == 10) {
+            try {
+                throw new Exception("it's can be");
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+            }
+        }
+
         log.info("Finding details of post with id {}", id);
 
         Optional<Post> optionalPost = POSTS.stream()
